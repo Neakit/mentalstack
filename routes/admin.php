@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->group(function () {
+
+    // return admin main view page
+    Route::get('/{any}', function () {
+        return view('admin');
+    });
+
 });
