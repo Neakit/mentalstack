@@ -34,7 +34,11 @@ const router = new VueRouter({
                 {
                     path: 'dashboard',
                     component: Dashboard,
-                    name: 'admin.dashboard'
+                    name: 'admin.dashboard',
+                    meta: {
+                        name: 'Главная',
+                        icon: 'mdi-home'
+                    }
                 }
             ]
         }

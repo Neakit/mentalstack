@@ -1,8 +1,2 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// This file seems to be necessary so that we can specify a source for .sass() call in mix
 
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
