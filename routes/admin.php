@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
 
     // auth routes
-    Route::post('login', 'AdminController@login')->middleware(['admin', 'web']);
+    Route::post('login', 'AdminController@login')->middleware('admin');
 
     // return admin main view page
     Route::get('/{any}', function () {
         return view('admin');
     })->middleware('admin');
 
-    // роут крад должен быть авторизован и админский
-//    Route::post('/d/d/d', 'AdminController@login')->middleware(['auth, admin']);
+    // main controller
+    Route::any('/{model}/{method}/{additional?}', 'AdminController@locator')->middleware('admin');
 
 });
