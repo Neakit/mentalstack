@@ -1,9 +1,12 @@
 import Vue     from 'vue';
 import App     from "./App";
 import router  from "./router";
+import store   from "./store";
 import Vuetify from "vuetify/lib";
 
 Vue.use(Vuetify);
+
+require('./filters');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -18,6 +21,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 new Vue({
     el: '#app',
     router,
+    store,
     vuetify: new Vuetify({
         theme: {
             dark: false
