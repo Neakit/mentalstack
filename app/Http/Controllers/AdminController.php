@@ -50,4 +50,17 @@ class AdminController extends Controller
             ], 401);
         }
     }
+
+    /**
+     * @param Request $request
+     * @return false|string
+     */
+    public function logout(Request $request) {
+        Auth::logout();
+        return response()->json([
+            'success' => true,
+            'message' => 'successfully logout'
+        ], 200);
+    }
+
 }
