@@ -12,7 +12,10 @@ import DefaultLayout from "../layouts/DefaultLayout";
 /**
  * Import pages .vue files
  */
-import Dashboard from "../pages/Dashboard";
+import Dashboard  from "../pages/Dashboard";
+import Products   from "../pages/Products";
+import Categories from "../pages/Categories";
+import Models     from "../pages/Models";
 
 /**
  * Create VueRouter instance
@@ -38,6 +41,33 @@ const router = new VueRouter({
                     meta: {
                         name: 'Главная',
                         icon: 'mdi-home'
+                    }
+                },
+                {
+                    path: 'products',
+                    component: Products,
+                    name: 'admin.products',
+                    meta: {
+                        name: 'Продукты',
+                        icon: 'mdi-car-door'
+                    }
+                },
+                {
+                    path: 'models',
+                    component: Models,
+                    name: 'admin.models',
+                    meta: {
+                        name: 'Модели',
+                        icon: 'mdi-car-info'
+                    }
+                },
+                {
+                    path: 'categories',
+                    component: Categories,
+                    name: 'admin.categories',
+                    meta: {
+                        name: 'Категории',
+                        icon: 'mdi-car-shift-pattern'
                     }
                 }
             ]
