@@ -22,7 +22,8 @@
                 tile
                 outlined
                 color="primary"
-                @click="signout"
+                @click="logout"
+                :loading="loading"
             >
                 Exit <v-icon right>mdi-exit-to-app</v-icon>
             </v-btn>
@@ -36,13 +37,15 @@
 <script>
     export default {
         name: 'app',
-        props: {
-            source: String,
-        },
         data: () => ({
             drawer: null,
+            loading: false
         }),
         computed: {
+            /**
+             * Формирует из роутера и возвращает массив пунктов боковой панели
+             * @return Array
+             */
             routes() {
                 const route = this.$router.options.routes.find(r => r.name === 'admin');
                 return route.children.map( child => {
@@ -59,6 +62,7 @@
              * logout admin page
              */
             logout() {
+                this.loading = true;
                 axios({
                     method: 'get',
                     url: '/admin/logout'
@@ -68,6 +72,8 @@
                     }
                 }).catch(e => {
                     console.error('logout error. Component - ', this, 'error', e);
+                }).finally(() => {
+                    this.loading = false;
                 })
             }
         }
