@@ -8,7 +8,7 @@
         >
             <template v-slot:top>
                 <v-toolbar flat color="white">
-                    <v-toolbar-title>Категории запчастей</v-toolbar-title>
+                    <v-toolbar-title>Модели запчастей</v-toolbar-title>
                     <v-spacer/>
                     <v-text-field
                         v-model="params.filter"
