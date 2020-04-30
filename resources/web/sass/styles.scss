@@ -1,0 +1,14 @@
+@import '~vuetify/src/styles/styles.sass';
+
+$grid-breakpoints: (
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px - 16px,
+    'xl': 1200px - 16px
+);
+$container-max-widths: (
+    md: map-get($grid-breakpoints, 'md') * 0.9375,
+    lg: map-get($grid-breakpoints, 'lg') * 0.9375,
+    xl: map-get($grid-breakpoints, 'xl') * 0.9375
+);
