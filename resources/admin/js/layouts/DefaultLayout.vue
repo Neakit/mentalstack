@@ -12,7 +12,7 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-        <v-app-bar app clipped-left>
+        <v-app-bar app clipped-left color="indigo" dark>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
             <v-toolbar-title>Admin Panel</v-toolbar-title>
             <v-spacer></v-spacer>
@@ -21,11 +21,12 @@
                 class="ma-2"
                 tile
                 outlined
-                color="primary"
+                dark
                 @click="logout"
                 :loading="loading"
             >
-                Exit <v-icon right>mdi-exit-to-app</v-icon>
+                Выход
+            <v-icon right>mdi-exit-to-app</v-icon>
             </v-btn>
         </v-app-bar>
         <v-content>
