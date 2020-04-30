@@ -103,7 +103,7 @@ class BaseComponent {
      * @return mixed
      *
      */
-    public function getRecord($id){
+    public function getRecord(Request $request, $id) {
         $aFields = $this->aEditFields;
         if ($this->dbModel){
             $aData['data'] = $this->dbModel->where('id',$id)->first()->toArray();
