@@ -11,7 +11,8 @@
         "prod": "cross-env APP_SECTION=web NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "admin-hot": "cross-env APP_SECTION=admin NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "admin-prod": "cross-env APP_SECTION=admin NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "build": "npm run dev admin-dev"
+        "build": "npm run dev admin-dev",
+        "heroku-postbuild": "npm run build"
     },
     "devDependencies": {
         "axios": "^0.19",
