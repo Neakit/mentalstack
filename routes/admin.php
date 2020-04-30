@@ -17,6 +17,7 @@ Route::prefix('admin')->group(function () {
 
     // auth routes
     Route::post('login', 'AdminController@login')->middleware('admin');
+    Route::get('logout', 'AdminController@logout')->middleware('admin');
 
     // return admin main view page
     Route::get('/{any}', function () {
