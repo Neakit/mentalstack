@@ -170,4 +170,47 @@ class Products extends BaseComponent
             'data' => $data,
         ]);
     }
+
+    /**
+     * Фильтр раздела магазина
+     * @param Request $request
+     * @param null $additional
+     * @return JsonResponse
+     */
+    public function filterRecords(Request $request, $additional = null) {
+        $results = $this->dbModel::with(['category', 'productModel'])
+            ->where(function($q) use ($request){
+                if(isset($request->filter)){
+                    $q->where('title', 'like', "%" . urldecode($request->filter) . "%");
+                }
+            })->whereHas('category', function($q) use ($request){
+                if(isset($request->category_id)){
+                    $q->where('category_id', '=', $request->category_id);
+                }
+            })->whereHas('productModel', function($q) use ($request){
+                if(isset($request->product_model_id) && !empty($request->product_model_id)) {
+                    $q->whereIn('product_model_id', $request->product_model_id);
+                }
+            })->paginate(9);
+
+        foreach ($results as $product) {
+            $product['images'] = json_decode($product['images']);
+        }
+
+        return response()->json($results, 200);
+    }
+
+    /**
+     * @param int $id
+     * @return array|mixed
+     */
+    public function getRecord(Request $request, $nId){
+
+        if ($this->dbModel){
+            $result = $this->dbModel->where('id', $nId)->with(['category', 'productModel'])->first();
+            $result['images'] = json_decode($result['images']);
+
+        }
+        return $result;
+    }
 }
