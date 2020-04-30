@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('/{model}/{method}/{additional?}', 'HomeController@locator');
+
 Route::get('/{any}', function () {
     return view('web');
-});
+})->where('any', '.*');
+
+
+
