@@ -6,11 +6,11 @@ mix.setPublicPath('public/web/');
 Mix.listen('configReady', config => {
     const scssRule = config.module.rules.find(r => r.test.toString() === /\.scss$/.toString());
     const scssOptions = scssRule.loaders.find(l => l.loader === 'sass-loader').options;
-    scssOptions.data = '@import "./resources/web/sass/app.scss"';
+    scssOptions.data = '@import "./resources/web/sass/styles.scss";';
 
     const sassRule = config.module.rules.find(r => r.test.toString() === /\.sass$/.toString());
     const sassOptions = sassRule.loaders.find(l => l.loader === 'sass-loader').options;
-    sassOptions.data = '@import "./resources/web/sass/app.scss"';
+    sassOptions.data = '@import "./resources/web/sass/styles.scss"';
 });
 
 mix.options({
