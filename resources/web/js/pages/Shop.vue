@@ -1,6 +1,5 @@
 <template>
     <v-container>
-        <breadcrumbs />
 
         <v-row>
             <v-col cols="9">
@@ -54,13 +53,11 @@
 </template>
 
 <script>
-    import Breadcrumbs from '../components/breadcrumbs';
-    import ProductCard from "../components/ProductCard";
+    // import ProductCard from "../components/ProductCard";
 
     export default {
         components: {
-            'breadcrumbs': Breadcrumbs,
-            'product-card': ProductCard
+            // 'product-card': ProductCard
         },
         data() {
             return {
