@@ -13,6 +13,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
  */
 import Home        from "../pages/Home";
 import Shop        from "../pages/Shop";
+import Info        from "../pages/Info";
 import Guarantee   from "../pages/Guarantee";
 import Delivery    from "../pages/Delivery";
 import Contacts    from "../pages/Contacts";
@@ -36,10 +37,15 @@ const router = new VueRouter({
                     name: 'web.home'
                 },
                 {
-                    path: 'shop',
-                    component: Shop,
-                    name: 'web.shop'
+                    path: 'info',
+                    component: Info,
+                    name: 'web.info'
                 },
+                // {
+                //     path: 'shop',
+                //     component: Shop,
+                //     name: 'web.shop'
+                // },
                 {
                     path: 'guarantee',
                     component: Guarantee,

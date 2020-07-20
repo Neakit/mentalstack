@@ -80,12 +80,11 @@
 
 <script>
     // import Recommended from "../components/Recommended";
-
     import OrderModal from "../components/OrderModal";
 
     export default {
         components: {
-            OrderModal
+            OrderModal,
             // 'recommended': Recommended
         },
         created() {

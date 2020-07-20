@@ -3,7 +3,8 @@
         <v-data-table
             :headers="headers"
             :items="items"
-            :items-per-page="10"
+            :options.sync="options"
+            :server-items-length="totalItems"
             class="elevation-1"
         >
             <template v-slot:top>
@@ -160,6 +161,7 @@
     export default {
         data () {
             return {
+                page: 1,
                 rules: [
                     value => !value || value.size < 8000000 || 'Avatar size should be less than 2 MB!',
                 ],
@@ -199,6 +201,8 @@
                     { text: 'delete', value: 'delete'},
                 ],
                 items: [],
+                totalItems: 0,
+                options: {},
                 preview: [],
 
                 categories: [],
@@ -207,16 +211,21 @@
                 loading: {
                     deleting: false,
                     saving: false
-                }
+                },
             }
         },
         watch: {
             dialog (val) {
                 val || this.closeModal()
             },
+            options: {
+                handler () {
+                    this.getProducts()
+                },
+                deep: true,
+            },
         },
-
-        created() {
+        mounted() {
             this.getCategories().then(res => {
                 this.categories = res.data.data.map(i => {
                     return {
@@ -413,16 +422,18 @@
              * @returns {Promise}
              */
             getProducts() {
+                const { sortBy, sortDesc, page, itemsPerPage } = this.options
                 return axios.get('/admin/products/get-records-with-params', {
                     params: {
-                        start: 0,
-                        length: 10,
-                        currentPage: 1,
+                        start: (page - 1) * itemsPerPage,
+                        length: (page - 1) * itemsPerPage + itemsPerPage,
+                        currentPage: page,
                         filter: "",
                         sortRow: "id",
                         sort: 'desc'
                     }
                 }).then(res => {
+                    this.totalItems = res.data.count;
                     this.items = res.data.data.map(p => {
                         p.images = p.images !== null && p.images.length > 0 && p.images.map(i => {
                             return {
@@ -442,7 +453,7 @@
                         }
                     })
                 }).catch(e => {
-                    console.error('getProducts method Products component', this, e.response)
+                    console.error('getProducts method Products component', this, e)
                 })
             },
         }
