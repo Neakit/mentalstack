@@ -5,7 +5,6 @@
 - Laravel 7
 - Vue + VueRouter + Vuex + Vuetify
 - Admin/client segregation with auth checking
-- Trello api for order managing  
 
 Todo:
 - Pages with dynamic import
